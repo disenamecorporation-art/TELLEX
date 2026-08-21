@@ -1,0 +1,6 @@
+{
+  "name": "TELLEX",
+  "description": "Landing page moderna e interactiva de fumigación y control de plagas profesional con tecnología avanzada y atención premium.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
