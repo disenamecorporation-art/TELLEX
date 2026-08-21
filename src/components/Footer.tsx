@@ -56,9 +56,9 @@ export default function Footer({ onTabChange, currentTab }: FooterProps) {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 pb-16 border-b border-emerald-900/50">
           
           {/* Brand Info */}
-          <div className="lg:col-span-4 space-y-6">
+          <div className="lg:col-span-5 space-y-6">
             <img
-              src="https://i.postimg.cc/ZnZs8N5j/logoweb-tellex.png"
+              src="https://i.postimg.cc/pXyckHt7/tellexlogoblancoweb.png"
               alt="TELLEX Logo"
               referrerPolicy="no-referrer"
               className="h-16 w-auto object-contain brightness-100 contrast-125"
@@ -76,7 +76,7 @@ export default function Footer({ onTabChange, currentTab }: FooterProps) {
           </div>
 
           {/* Quick Links */}
-          <div className="lg:col-span-2 space-y-4">
+          <div className="lg:col-span-3 space-y-4">
             <h4 className="text-sm font-semibold uppercase tracking-wider text-slate-300">
               Navegación
             </h4>
@@ -103,7 +103,7 @@ export default function Footer({ onTabChange, currentTab }: FooterProps) {
           </div>
 
           {/* Contact Details */}
-          <div className="lg:col-span-3 space-y-4">
+          <div className="lg:col-span-4 space-y-4">
             <h4 className="text-sm font-semibold uppercase tracking-wider text-slate-300">
               Contacto Técnico
             </h4>
@@ -121,38 +121,6 @@ export default function Footer({ onTabChange, currentTab }: FooterProps) {
                 <span>Caracas, Venezuela.</span>
               </li>
             </ul>
-          </div>
-
-          {/* Interactive coverage Map representation */}
-          <div className="lg:col-span-3 space-y-4" id="coverage-map-box">
-            <h4 className="text-sm font-semibold uppercase tracking-wider text-slate-300">
-              Cobertura Activa
-            </h4>
-            <p className="text-xs text-emerald-100/60 font-light mb-2">
-              Caracas y Área Metropolitana con atención exprés.
-            </p>
-            {/* Minimalist Tech Vector Map */}
-            <div className="relative w-full h-36 rounded-2xl bg-emerald-950/40 border border-emerald-900 overflow-hidden flex items-center justify-center p-2">
-              <svg className="w-full h-full opacity-35" viewBox="0 0 200 100" fill="none">
-                <path d="M10,80 Q50,40 100,80 T190,80" stroke="rgba(255,255,255,0.15)" strokeWidth="1" />
-                <path d="M30,20 Q80,90 120,30 T180,50" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
-                <circle cx="60" cy="50" r="30" fill="none" stroke="rgba(202, 83, 26, 0.15)" strokeWidth="1" />
-                <circle cx="130" cy="40" r="45" fill="none" stroke="rgba(202, 83, 26, 0.1)" strokeWidth="1" />
-              </svg>
-              {/* Radar Pins */}
-              <div className="absolute top-1/3 left-1/4 flex flex-col items-center">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#ca531a] animate-pulse"></span>
-                <span className="text-[8px] bg-slate-900/70 text-white px-1 rounded-sm mt-1 font-semibold">Caracas Norte</span>
-              </div>
-              <div className="absolute top-1/2 left-2/3 flex flex-col items-center">
-                <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
-                <span className="text-[8px] bg-slate-900/70 text-white px-1 rounded-sm mt-1 font-semibold">Caracas Este</span>
-              </div>
-              <div className="absolute bottom-1/4 right-1/4 flex flex-col items-center">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#ca531a] animate-pulse"></span>
-                <span className="text-[8px] bg-slate-900/70 text-white px-1 rounded-sm mt-1 font-semibold">Caracas Oeste</span>
-              </div>
-            </div>
           </div>
 
         </div>

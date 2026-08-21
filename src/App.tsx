@@ -12,7 +12,8 @@ import Footer from './components/Footer';
 import WhatsAppButton from './components/WhatsAppButton';
 import AdminDrawer from './components/AdminDrawer';
 import StoreSection from './components/StoreSection';
-import { Lead, CartItem } from './types';
+import FeaturedProducts from './components/FeaturedProducts';
+import { Lead, CartItem, Product } from './types';
 
 export default function App() {
   const [leads, setLeads] = useState<Lead[]>([]);
@@ -77,6 +78,22 @@ export default function App() {
     };
     const updated = [newLead, ...leads];
     saveLeads(updated);
+  };
+
+  const handleAddToCart = (product: Product) => {
+    setCart((prevCart) => {
+      const existing = prevCart.find((item) => item.product.id === product.id);
+      if (existing) {
+        return prevCart.map((item) =>
+          item.product.id === product.id
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+        );
+      }
+      return [...prevCart, { product, quantity: 1 }];
+    });
+    setIsCartOpen(true);
+    setCurrentTab('tienda');
   };
 
   const handleDeleteLead = (id: string) => {
@@ -179,6 +196,12 @@ export default function App() {
 
             {/* 3. Services Grid (Termitas, Roedores, Insectos) */}
             <ServicesSection onSelectService={handleSelectService} />
+
+            {/* Productos Destacados */}
+            <FeaturedProducts 
+              onAddToCart={handleAddToCart} 
+              onGoToStore={() => setCurrentTab('tienda')} 
+            />
 
             {/* 4. Process Horizontal Timeline (4 pasos) */}
             <WorkProcess />

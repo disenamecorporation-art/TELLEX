@@ -15,7 +15,7 @@ const PRODUCTS_DATA: Product[] = [
     price: 1450,
     originalPrice: 1800,
     category: 'geles',
-    image: '🧪',
+    image: 'https://i.postimg.cc/LXX8hXrz/image.png',
     rating: 4.8,
     reviewsCount: 124,
     inStock: true,
@@ -29,107 +29,12 @@ const PRODUCTS_DATA: Product[] = [
     price: 420,
     originalPrice: 490,
     category: 'geles',
-    image: '🎯',
+    image: 'https://i.postimg.cc/3RcJGhhm/image.png',
     rating: 4.9,
     reviewsCount: 89,
     inStock: true,
     isOffer: true,
     isNew: true
-  },
-  {
-    id: 'prod_trampa_humana',
-    name: 'Trampa Multi-Captura Metálica',
-    description: 'Caja metálica de captura humana para ratones. Mecanismo de balancín sin uso de químicos dañinos. Ideal para industrias.',
-    price: 310,
-    category: 'trampas',
-    image: '📦',
-    rating: 4.5,
-    reviewsCount: 42,
-    inStock: true
-  },
-  {
-    id: 'prod_cebadero_seguro',
-    name: 'Estación Cebadero de Seguridad',
-    description: 'Caja cebadero plástica de polímero de alta resistencia con llave de seguridad. Protege cebos contra mascotas y niños.',
-    price: 185,
-    originalPrice: 240,
-    category: 'trampas',
-    image: '🔒',
-    rating: 4.7,
-    reviewsCount: 156,
-    inStock: true,
-    isOffer: true
-  },
-  {
-    id: 'prod_brodifacoum',
-    name: 'Raticida Brodifacoum Pellets 1kg',
-    description: 'Cebo raticida anticoagulante altamente letal en una sola ingesta. Resistente a condiciones extremas de humedad.',
-    price: 290,
-    category: 'trampas',
-    image: '🌾',
-    rating: 4.6,
-    reviewsCount: 73,
-    inStock: true,
-    isNew: true
-  },
-  {
-    id: 'prod_aspersor_manual',
-    name: 'Aspersor Profesional Tellex 5L',
-    description: 'Tanque aspersor de presión de uso continuo. Boquilla regulable de latón y manguera reforzada para químicos profesionales.',
-    price: 1250,
-    category: 'aspersores',
-    image: '🚰',
-    rating: 4.8,
-    reviewsCount: 95,
-    inStock: true,
-    isBestSeller: true
-  },
-  {
-    id: 'prod_nebulizador_ulv',
-    name: 'Nebulizador en Frío ULV Eléctrico',
-    description: 'Equipo de micro-difusión para desinfección y control ambiental. Tanque de 4 litros y manguera flexible de gran alcance.',
-    price: 4850,
-    originalPrice: 5500,
-    category: 'aspersores',
-    image: '💨',
-    rating: 4.9,
-    reviewsCount: 18,
-    inStock: true,
-    isOffer: true
-  },
-  {
-    id: 'prod_traje_tyvek',
-    name: 'Overol de Protección Química Tyvek',
-    description: 'Traje de protección de una sola pieza tipo Tyvek contra micropartículas secas y salpicaduras ligeras de líquidos químicos.',
-    price: 340,
-    category: 'proteccion',
-    image: '🛡️',
-    rating: 4.4,
-    reviewsCount: 110,
-    inStock: true
-  },
-  {
-    id: 'prod_respirador_3m',
-    name: 'Respirador 3M con Filtros Químicos',
-    description: 'Respirador de media cara con filtros intercambiables para vapores orgánicos y gases de aspersión de insecticidas.',
-    price: 1150,
-    category: 'proteccion',
-    image: '👺',
-    rating: 4.9,
-    reviewsCount: 65,
-    inStock: true,
-    isBestSeller: true
-  },
-  {
-    id: 'prod_guantes_nitrilo',
-    name: 'Guantes de Nitrilo Reforzados',
-    description: 'Guantes de nitrilo industriales de caña larga de 15 pulgadas para manipulación segura de químicos concentrados.',
-    price: 125,
-    category: 'proteccion',
-    image: '🧤',
-    rating: 4.6,
-    reviewsCount: 202,
-    inStock: false
   }
 ];
 
@@ -506,9 +411,18 @@ export default function StoreSection({
                       </div>
 
                       {/* Product Visual Container (WooCommerce Box) */}
-                      <div className="h-48 bg-slate-100 flex items-center justify-center text-6xl group-hover:scale-105 transition-transform duration-500 select-none relative">
+                      <div className="h-72 md:h-80 bg-slate-100 flex items-center justify-center text-6xl group-hover:scale-101 transition-transform duration-500 select-none relative overflow-hidden">
                         <div className="absolute inset-0 bg-gradient-to-t from-slate-200/50 to-transparent pointer-events-none"></div>
-                        {product.image}
+                        {product.image.startsWith('http') ? (
+                          <img 
+                            src={product.image} 
+                            className="w-full h-full object-contain p-4 scale-120 group-hover:scale-135 transition-transform duration-500 ease-out" 
+                            referrerPolicy="no-referrer" 
+                            alt={product.name} 
+                          />
+                        ) : (
+                          product.image
+                        )}
                       </div>
 
                       {/* Product Specs */}
@@ -517,7 +431,7 @@ export default function StoreSection({
                           {CATEGORIES_MAP[product.category]}
                         </span>
                         
-                        <h4 className="font-bold text-slate-900 group-hover:text-[#ca531a] transition-colors text-base line-clamp-1">
+                        <h4 className="font-extrabold text-slate-900 group-hover:text-[#ca531a] transition-colors text-xl md:text-2xl line-clamp-1">
                           {product.name}
                         </h4>
 
@@ -550,8 +464,8 @@ export default function StoreSection({
                                 ${product.originalPrice.toLocaleString('es-VE')}
                               </span>
                             )}
-                            <span className="text-lg font-black text-slate-900">
-                              ${product.price.toLocaleString('es-VE')} <span className="text-[10px] font-normal text-slate-500">USD</span>
+                            <span className="text-2xl md:text-3xl font-black text-[#ca531a]">
+                              ${product.price.toLocaleString('es-VE')} <span className="text-xs font-normal text-slate-500">USD</span>
                             </span>
                           </div>
 
@@ -645,8 +559,12 @@ export default function StoreSection({
                       key={item.product.id}
                       className="flex items-center gap-4 bg-slate-50 p-3 rounded-2xl border border-slate-100"
                     >
-                      <div className="text-4xl bg-slate-200/60 p-2 rounded-xl select-none">
-                        {item.product.image}
+                      <div className="w-12 h-12 bg-slate-200/60 rounded-xl select-none flex items-center justify-center overflow-hidden shrink-0">
+                        {item.product.image.startsWith('http') ? (
+                          <img src={item.product.image} className="w-full h-full object-contain p-1" referrerPolicy="no-referrer" alt={item.product.name} />
+                        ) : (
+                          <span className="text-2xl">{item.product.image}</span>
+                        )}
                       </div>
 
                       <div className="flex-1">
@@ -1005,9 +923,13 @@ export default function StoreSection({
               {/* Scrollable Modal Content */}
               <div className="overflow-y-auto p-6 md:p-8 space-y-6 no-scrollbar">
                 {/* Visual Header */}
-                <div className="h-56 bg-slate-100 rounded-2xl flex items-center justify-center text-7xl select-none relative shadow-inner">
+                <div className="h-56 bg-slate-100 rounded-2xl flex items-center justify-center text-7xl select-none relative shadow-inner overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-200/40 to-transparent pointer-events-none"></div>
-                  {selectedProductForModal.image}
+                  {selectedProductForModal.image.startsWith('http') ? (
+                    <img src={selectedProductForModal.image} className="w-full h-full object-contain p-6" referrerPolicy="no-referrer" alt={selectedProductForModal.name} />
+                  ) : (
+                    selectedProductForModal.image
+                  )}
                   
                   {/* Category badge */}
                   <span className="absolute bottom-4 left-4 text-[10px] font-extrabold uppercase tracking-widest text-white bg-[#24411a] px-3 py-1 rounded-full shadow">

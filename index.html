@@ -1,6 +1,31 @@
 <!doctype html>
 <html lang="es">
   <head>
+    <script>
+      // Fix for sandboxed iframe environments where window.fetch is getter-only
+      try {
+        const originalFetch = window.fetch;
+        if (originalFetch) {
+          let customFetch = originalFetch;
+          const descriptor = {
+            get() {
+              return customFetch;
+            },
+            set(value) {
+              customFetch = value;
+            },
+            configurable: true,
+            enumerable: true
+          };
+          Object.defineProperty(window, 'fetch', descriptor);
+          if (typeof globalThis !== 'undefined' && window !== globalThis) {
+            Object.defineProperty(globalThis, 'fetch', descriptor);
+          }
+        }
+      } catch (e) {
+        console.warn("Failed to patch window.fetch:", e);
+      }
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TELLEX | Control Profesional de Plagas y Fumigación</title>
