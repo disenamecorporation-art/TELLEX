@@ -50,24 +50,47 @@ export default function FinalCTA({ onAddLead, preselectedPest }: FinalCTAProps) 
 
     setIsSubmitting(true);
 
-    // Simulate tech network request
+    const pestLabels = {
+      termitas: 'Termitas',
+      roedores: 'Roedores',
+      insectos: 'Insectos/Rastreros',
+      otros: 'Otro Tipo de Plaga'
+    };
+    
+    const levelLabels = {
+      bajo: 'Bajo (Preventivo)',
+      medio: 'Medio (Avistamientos constantes)',
+      critico: 'Crítico (Daños visibles / Emergencia)'
+    };
+
+    const text = `*SOLICITUD DE INSPECCIÓN GRATUITA - TELLEX VENEZUELA* 🛡️\n\n` +
+      `*Cliente:* ${name.trim()}\n` +
+      `*Teléfono:* ${phone.trim()}\n` +
+      `*Plaga Detectada:* ${pestLabels[pestType] || pestType}\n` +
+      `*Nivel de Infestación:* ${levelLabels[infestationLevel] || infestationLevel}\n\n` +
+      `Por favor contáctenme para agendar la inspección gratuita de mis espacios.`;
+
+    // Simulate tech network request and add to admin console
     setTimeout(() => {
       onAddLead({
         name: name.trim(),
         phone: phone.trim(),
         pestType,
         infestationLevel,
-        notes: `Solicitado desde el formulario rápido de la Landing Page.`
+        notes: `Solicitado desde el formulario rápido de la Landing Page. WhatsApp abierto.`
       });
 
       setIsSubmitting(false);
       setIsSuccess(true);
+
+      // Open WhatsApp in a new tab
+      window.open(`https://wa.me/584126107313?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
       
       // Reset Form fields
       setName('');
       setPhone('');
       setInfestationLevel('medio');
-    }, 1000);
+    }, 600);
   };
 
   return (

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, ShoppingCart } from 'lucide-react';
+import { Menu, X, ShoppingCart, User as UserIcon, Shield } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import { User } from '../types';
 
 interface HeaderProps {
   onQuoteClick: () => void;
@@ -9,6 +10,10 @@ interface HeaderProps {
   onTabChange: (tab: 'home' | 'tienda') => void;
   cartItemsCount: number;
   onOpenCart: () => void;
+  
+  // Auth Integration props
+  currentUser: User | null;
+  onOpenAuth: () => void;
 }
 
 export default function Header({ 
@@ -17,7 +22,9 @@ export default function Header({
   currentTab, 
   onTabChange,
   cartItemsCount,
-  onOpenCart
+  onOpenCart,
+  currentUser,
+  onOpenAuth
 }: HeaderProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -165,6 +172,32 @@ export default function Header({
               )}
             </motion.button>
 
+            {currentUser ? (
+              <button
+                onClick={onOpenAuth}
+                className="flex items-center gap-2 bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-800 font-extrabold text-xs px-4.5 py-3 rounded-full transition-all cursor-pointer shadow-sm shrink-0"
+                id="header-user-btn"
+              >
+                <div className="w-5.5 h-5.5 bg-[#ca531a] text-white rounded-full flex items-center justify-center font-bold text-xs shadow-inner">
+                  {currentUser.name.charAt(0).toUpperCase()}
+                </div>
+                <span className="max-w-[100px] truncate">{currentUser.name.split(' ')[0]}</span>
+                {currentUser.role === 'admin' && (
+                  <span className="bg-amber-100 text-amber-800 text-[8px] font-black px-1.5 py-0.5 rounded border border-amber-200 flex items-center gap-0.5">
+                    <Shield className="w-2.5 h-2.5 text-amber-700" /> ADM
+                  </span>
+                )}
+              </button>
+            ) : (
+              <button
+                onClick={onOpenAuth}
+                className="bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs px-5 py-3 rounded-full transition-all cursor-pointer shrink-0"
+                id="header-login-btn"
+              >
+                Mi Cuenta
+              </button>
+            )}
+
             <button
               onClick={() => {
                 onTabChange('home');
@@ -245,6 +278,38 @@ export default function Header({
                   {item.label}
                 </a>
               ))}
+              {currentUser ? (
+                <button
+                  onClick={() => {
+                    setIsMobileMenuOpen(false);
+                    onOpenAuth();
+                  }}
+                  className="flex items-center justify-center gap-2 bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-800 font-extrabold text-sm py-3.5 rounded-full transition-all w-full"
+                  id="mobile-user-btn"
+                >
+                  <div className="w-5.5 h-5.5 bg-[#ca531a] text-white rounded-full flex items-center justify-center font-bold text-xs">
+                    {currentUser.name.charAt(0).toUpperCase()}
+                  </div>
+                  <span>{currentUser.name} (Mi Cuenta)</span>
+                  {currentUser.role === 'admin' && (
+                    <span className="bg-amber-100 text-amber-800 text-[8px] font-black px-1.5 py-0.5 rounded border border-amber-200">
+                      ADMIN
+                    </span>
+                  )}
+                </button>
+              ) : (
+                <button
+                  onClick={() => {
+                    setIsMobileMenuOpen(false);
+                    onOpenAuth();
+                  }}
+                  className="bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-sm py-3.5 rounded-full transition-all text-center w-full"
+                  id="mobile-login-btn"
+                >
+                  Mi Cuenta / Iniciar Sesión
+                </button>
+              )}
+
               <button
                 onClick={() => {
                   setIsMobileMenuOpen(false);
@@ -256,7 +321,7 @@ export default function Header({
                     }
                   }, 100);
                 }}
-                className="bg-[#ca531a] hover:bg-[#ca531a]/90 text-white font-semibold text-center py-3.5 rounded-full mt-4 shadow-md hover:shadow-lg transition-all"
+                className="bg-[#ca531a] hover:bg-[#ca531a]/90 text-white font-semibold text-center py-3.5 rounded-full mt-2 shadow-md hover:shadow-lg transition-all"
                 id="mobile-header-cta-btn"
               >
                 Cotiza Ahora

@@ -65,3 +65,17 @@ export interface StatItem {
   label: string;
   description: string;
 }
+
+export interface User {
+  id: string;
+  name: string;
+  email: string;
+  password?: string;
+  role: 'admin' | 'user';
+  createdAt: string;
+}
+
+export interface Category {
+  id: string;
+  name: string;
+}

@@ -6,41 +6,15 @@ import { Product } from '../types';
 interface FeaturedProductsProps {
   onAddToCart: (product: Product) => void;
   onGoToStore: () => void;
+  products: Product[];
 }
 
-const FEATURED_PRODUCTS: Product[] = [
-  {
-    id: 'prod_fendona',
-    name: 'Fendona Pro 60 SC',
-    description: 'Insecticida concentrado de alto espectro y prolongado efecto residual. Excelente control de chinches, cucarachas y termitas.',
-    price: 1450,
-    originalPrice: 1800,
-    category: 'geles',
-    image: 'https://i.postimg.cc/LXX8hXrz/image.png',
-    rating: 4.8,
-    reviewsCount: 124,
-    inStock: true,
-    isOffer: true,
-    isBestSeller: true
-  },
-  {
-    id: 'prod_maxforce',
-    name: 'Gel Maxforce Prime 30g',
-    description: 'Cebo insecticida en jeringa de máxima atracción alimentaria. Erradicación total de colonias de cucarachas en cocinas y alacenas.',
-    price: 420,
-    originalPrice: 490,
-    category: 'geles',
-    image: 'https://i.postimg.cc/3RcJGhhm/image.png',
-    rating: 4.9,
-    reviewsCount: 89,
-    inStock: true,
-    isOffer: true,
-    isNew: true
-  }
-];
-
-export default function FeaturedProducts({ onAddToCart, onGoToStore }: FeaturedProductsProps) {
+export default function FeaturedProducts({ onAddToCart, onGoToStore, products }: FeaturedProductsProps) {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+
+  // Get featured products (marked as bestseller, offer, or new, fallback to first 2 products)
+  const featured = products.filter(p => p.isBestSeller || p.isOffer || p.isNew).slice(0, 2);
+  const displayProducts = featured.length > 0 ? featured : products.slice(0, 2);
 
   const handleWhatsAppInquiry = (product: Product) => {
     const text = `Hola Tellex, estoy interesado en el producto destacado: *${product.name}* (Precio: $${product.price} USD). ¿Tienen disponibilidad y realizan envíos?`;
@@ -98,7 +72,7 @@ export default function FeaturedProducts({ onAddToCart, onGoToStore }: FeaturedP
 
         {/* Featured Products Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          {FEATURED_PRODUCTS.map((product, idx) => (
+          {displayProducts.map((product, idx) => (
             <motion.div
               key={product.id}
               initial={{ opacity: 0, y: 30 }}

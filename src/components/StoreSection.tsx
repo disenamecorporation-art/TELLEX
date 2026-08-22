@@ -6,45 +6,7 @@ import {
 } from 'lucide-react';
 import { Product, CartItem, Lead } from '../types';
 
-// Mock list of professional pest control products (WooCommerce style)
-const PRODUCTS_DATA: Product[] = [
-  {
-    id: 'prod_fendona',
-    name: 'Fendona Pro 60 SC',
-    description: 'Insecticida concentrado de alto espectro y prolongado efecto residual. Excelente control de chinches, cucarachas y termitas.',
-    price: 1450,
-    originalPrice: 1800,
-    category: 'geles',
-    image: 'https://i.postimg.cc/LXX8hXrz/image.png',
-    rating: 4.8,
-    reviewsCount: 124,
-    inStock: true,
-    isOffer: true,
-    isBestSeller: true
-  },
-  {
-    id: 'prod_maxforce',
-    name: 'Gel Maxforce Prime 30g',
-    description: 'Cebo insecticida en jeringa de máxima atracción alimentaria. Erradicación total de colonias de cucarachas en cocinas y alacenas.',
-    price: 420,
-    originalPrice: 490,
-    category: 'geles',
-    image: 'https://i.postimg.cc/3RcJGhhm/image.png',
-    rating: 4.9,
-    reviewsCount: 89,
-    inStock: true,
-    isOffer: true,
-    isNew: true
-  }
-];
-
-const CATEGORIES_MAP = {
-  todos: 'Todos los Productos',
-  geles: 'Insecticidas y Geles',
-  trampas: 'Raticidas y Trampas',
-  aspersores: 'Equipamiento de Aspersión',
-  proteccion: 'Protección y Seguridad'
-};
+// Dynamic pest control products list and categories mapping are passed as props from App state.
 
 interface StoreSectionProps {
   onAddLead: (leadData: Omit<Lead, 'id' | 'createdAt' | 'status'>) => void;
@@ -53,6 +15,10 @@ interface StoreSectionProps {
   setCart: React.Dispatch<React.SetStateAction<CartItem[]>>;
   isCartOpen: boolean;
   setIsCartOpen: (open: boolean) => void;
+  
+  // Dynamic Catalog States passed from parent
+  products: Product[];
+  categories: { [key: string]: string };
 }
 
 export default function StoreSection({ 
@@ -61,7 +27,9 @@ export default function StoreSection({
   cart,
   setCart,
   isCartOpen,
-  setIsCartOpen
+  setIsCartOpen,
+  products,
+  categories
 }: StoreSectionProps) {
   // Store States
   const [selectedCategory, setSelectedCategory] = useState<string>('todos');
@@ -81,7 +49,7 @@ export default function StoreSection({
   const [checkoutSuccess, setCheckoutSuccess] = useState<string | null>(null);
 
   // Filter and Sort Logic
-  const filteredProducts = PRODUCTS_DATA.filter((product) => {
+  const filteredProducts = products.filter((product) => {
     const matchesCategory = selectedCategory === 'todos' || product.category === selectedCategory;
     const matchesPrice = product.price <= maxPrice;
     const matchesStock = !onlyInStock || product.inStock;
@@ -248,7 +216,7 @@ export default function StoreSection({
                 Categorías de Productos
               </h3>
               <ul className="space-y-2 text-sm text-slate-600">
-                {Object.entries(CATEGORIES_MAP).map(([key, label]) => (
+                {Object.entries(categories).map(([key, label]) => (
                   <li key={key}>
                     <button
                       onClick={() => setSelectedCategory(key)}
@@ -262,8 +230,8 @@ export default function StoreSection({
                       <span>{label}</span>
                       <span className="text-[10px] bg-slate-100 text-slate-500 py-0.5 px-2 rounded-full">
                         {key === 'todos' 
-                          ? PRODUCTS_DATA.length 
-                          : PRODUCTS_DATA.filter(p => p.category === key).length}
+                          ? products.length 
+                          : products.filter(p => p.category === key).length}
                       </span>
                     </button>
                   </li>
@@ -339,7 +307,7 @@ export default function StoreSection({
             {/* Header controls (Sorting, items found) */}
             <div className="bg-white border border-slate-200 rounded-2xl px-5 py-4 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-sm">
               <p className="text-sm text-slate-600 font-medium">
-                Mostrando <span className="font-bold text-[#ca531a]">{filteredProducts.length}</span> de <span className="font-bold text-slate-800">{PRODUCTS_DATA.length}</span> productos
+                Mostrando <span className="font-bold text-[#ca531a]">{filteredProducts.length}</span> de <span className="font-bold text-slate-800">{products.length}</span> productos
               </p>
               
               <div className="flex items-center gap-2">
@@ -428,7 +396,7 @@ export default function StoreSection({
                       {/* Product Specs */}
                       <div className="p-5 flex-1 flex flex-col">
                         <span className="text-[10px] font-bold uppercase tracking-widest text-[#24411a] mb-1">
-                          {CATEGORIES_MAP[product.category]}
+                          {categories[product.category] || product.category}
                         </span>
                         
                         <h4 className="font-extrabold text-slate-900 group-hover:text-[#ca531a] transition-colors text-xl md:text-2xl line-clamp-1">
@@ -933,7 +901,7 @@ export default function StoreSection({
                   
                   {/* Category badge */}
                   <span className="absolute bottom-4 left-4 text-[10px] font-extrabold uppercase tracking-widest text-white bg-[#24411a] px-3 py-1 rounded-full shadow">
-                    {CATEGORIES_MAP[selectedProductForModal.category]}
+                    {categories[selectedProductForModal.category] || selectedProductForModal.category}
                   </span>
                 </div>
 
