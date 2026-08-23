@@ -14,6 +14,7 @@ import AdminDrawer from './components/AdminDrawer';
 import StoreSection from './components/StoreSection';
 import FeaturedProducts from './components/FeaturedProducts';
 import AuthModal from './components/AuthModal';
+import PestEducation from './components/PestEducation';
 import { getSupabase } from './lib/supabase';
 import { Lead, CartItem, Product, User } from './types';
 
@@ -489,6 +490,9 @@ export default function App() {
 
             {/* 3. Services Grid (Termitas, Roedores, Insectos) */}
             <ServicesSection onSelectService={handleSelectService} />
+
+            {/* 3.5. Detailed Pest Education container (Chinches, Dengue, etc.) */}
+            <PestEducation />
 
             {/* Productos Destacados */}
             <FeaturedProducts 
