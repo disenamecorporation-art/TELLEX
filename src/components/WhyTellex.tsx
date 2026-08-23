@@ -30,7 +30,7 @@ export default function WhyTellex() {
     },
     {
       feature: 'Garantía certificada',
-      tellex: 'Póliza legal escrita con vigencia extendida por 12 meses.',
+      tellex: 'Póliza legal escrita con vigencia garantizada por 5 meses.',
       traditional: 'Garantías únicamente verbales y cobros extra por reincidencia.',
       isBetter: true
     }
@@ -49,8 +49,8 @@ export default function WhyTellex() {
     },
     {
       icon: RefreshCw,
-      title: 'Póliza de Blindaje',
-      desc: 'Si una plaga vuelve a aparecer bajo los 12 meses de cobertura, volvemos a aplicar sin costo.'
+      title: 'Garantía por 5 Meses',
+      desc: 'Si una plaga vuelve a aparecer dentro de los 5 meses de cobertura, volvemos a aplicar sin costo.'
     }
   ];
 
@@ -75,7 +75,7 @@ export default function WhyTellex() {
           </div>
           <div className="lg:col-span-7">
             <p className="text-base md:text-lg text-emerald-100/80 font-light leading-relaxed" id="why-desc">
-              No somos una empresa de fumigación tradicional. Abordamos cada caso desde una perspectiva científica, utilizando tecnología alemana y sistemas de exclusión mecánica para erradicar plagas de forma duradera y amigable con el medio ambiente.
+              Con más de <strong>15 años en el mercado</strong> de control de plagas profesional, no somos una empresa de fumigación tradicional. Abordamos cada caso desde una perspectiva científica y certificada, utilizando tecnología alemana avanzada y sistemas de exclusión mecánica para erradicar plagas de forma duradera, segura y totalmente amigable con el medio ambiente.
             </p>
           </div>
         </div>

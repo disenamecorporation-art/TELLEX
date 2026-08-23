@@ -41,13 +41,13 @@ export default function ServicesSection({ onSelectService }: ServicesSectionProp
     },
     {
       id: 'insectos',
-      title: 'Fumigación de Insectos Rastrerosen',
-      description: 'Control absoluto de cucarachas, hormigas, chinches y avispas utilizando termonebulización biodegradable de baja toxicidad para humanos y mascotas.',
-      fullDetails: 'Los insectos comunes invaden cocinas, dormitorios y áreas de juegos con rapidez. Empleamos geles de atracción alimenticia y microencapsulados de liberación lenta, ideales para eliminar nidos enteros de cucarachas u hormigas sin evacuar la propiedad por días.',
+      title: 'Fumigación de Insectos, Chinches y Dengue',
+      description: 'Control absoluto de chinches, cucarachas, hormigas y mosquitos del dengue. Aplicamos tratamientos especializados como nebulización, aspirado industrial y vapor a alta temperatura.',
+      fullDetails: 'La presencia de plagas como las chinches de cama y el mosquito transmisor del dengue (Aedes aegypti) requiere un enfoque científico de alta eficacia. Para la erradicación total de chinches de cama en colchones y grietas, empleamos nuestra Triple Acción Letal e Inocua: 1) Aspirado industrial de alta potencia para remover huevos y adultos; 2) Tratamiento de Vapor a Alta Temperatura (choque térmico ecológico que elimina el 100% de ninfas y huevos); y 3) Nebulización en frío (Ultra Bajo Volumen) con microencapsulados ecológicos de liberación lenta. Para combatir el Dengue, implementamos termonebulizaciones espaciales y eliminación biológica de criaderos de larvas.',
       benefits: [
-        'Geles inodoros sin necesidad de vaciar alacenas',
-        'Termonebulización de amplio espectro',
-        'Productos 100% seguros para niños y mascotas',
+        'Tratamiento de chinches: Aspirado, Vapor térmico y Nebulización',
+        'Prevención activa de criaderos del mosquito del Dengue',
+        'Fórmulas inodoras de grado clínico seguras para bebés y mascotas',
         'Eliminación de nidos y colonias completas'
       ],
       threatLevel: 'Alto',

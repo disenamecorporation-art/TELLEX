@@ -40,7 +40,7 @@ export default function HeroSection({ onQuoteClick, onWorkClick }: HeroSectionPr
               className="text-xs font-bold uppercase tracking-widest text-[#ca531a] bg-[#ca531a]/10 px-3 py-1.5 rounded-full inline-block w-fit mb-6"
               id="hero-badge"
             >
-              Ingeniería Avanzada en Fumigación
+              15 Años en el Mercado — Líderes en Fumigación de Chinches y Dengue
             </motion.span>
 
             {/* Giant Title: Montserrat Light/ExtraLight for display feel */}
@@ -51,8 +51,8 @@ export default function HeroSection({ onQuoteClick, onWorkClick }: HeroSectionPr
               className="text-4xl md:text-5xl xl:text-6xl font-light text-slate-900 tracking-tight leading-[1.1] mb-6"
               id="hero-title"
             >
-              Protegemos tu hogar, <br />
-              <span className="font-semibold text-[#24411a]">erradicamos la amenaza</span>
+              Control de Plagas Certificado con <br />
+              <span className="font-semibold text-[#24411a]">5 meses de garantía total</span>
             </motion.h1>
 
             {/* Quote attribution like Elon Musk reference */}
@@ -64,10 +64,10 @@ export default function HeroSection({ onQuoteClick, onWorkClick }: HeroSectionPr
               id="hero-quote-block"
             >
               <p className="text-slate-500 text-sm md:text-base font-light italic leading-relaxed">
-                "La seguridad estructural y la tranquilidad de tu familia no admiten soluciones a medias. Aplicamos ciencia, no solo veneno."
+                "Eliminación total y ecológica de chinches mediante nebulización, aspirado industrial y vapor a alta temperatura. Prevención activa contra el mosquito del dengue."
               </p>
               <span className="text-xs uppercase font-semibold text-slate-400 tracking-wider mt-2 block">
-                — Comité Técnico de Ingeniería, Equipo TELLEX
+                — Ingeniería Sanitaria Certificada, TELLEX
               </span>
             </motion.div>
 

@@ -11,8 +11,8 @@ export default function TrustBar() {
     },
     {
       icon: Sparkles,
-      title: '+10 Años de Experiencia',
-      desc: 'Expertos de Alta Gama',
+      title: '15 Años en el Mercado',
+      desc: 'Líderes de Confianza Absoluta',
     },
     {
       icon: Leaf,
@@ -21,8 +21,8 @@ export default function TrustBar() {
     },
     {
       icon: ShieldCheck,
-      title: 'Garantía de 12 Meses',
-      desc: 'Seguimiento Escrito Sin Costo',
+      title: '5 Meses de Garantía',
+      desc: 'Soporte y Seguimiento por Escrito',
     },
   ];
 
