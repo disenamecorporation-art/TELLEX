@@ -105,20 +105,33 @@ export default function Footer({ onTabChange, currentTab }: FooterProps) {
           {/* Contact Details */}
           <div className="lg:col-span-4 space-y-4">
             <h4 className="text-sm font-semibold uppercase tracking-wider text-slate-300">
-              Contacto Técnico
+              Oficinas y Cobertura Nacional
             </h4>
             <ul className="space-y-3.5 text-xs md:text-sm text-emerald-100/80 font-light">
               <li className="flex items-start gap-2.5">
                 <Phone className="w-4 h-4 text-[#ca531a] shrink-0 mt-0.5" />
-                <span>+58 414-2338654</span>
+                <div>
+                  <p className="font-semibold text-white">Central de Atención:</p>
+                  <p>+58 414-2338654</p>
+                </div>
               </li>
               <li className="flex items-start gap-2.5">
                 <Mail className="w-4 h-4 text-[#ca531a] shrink-0 mt-0.5" />
                 <span className="break-all">Fumigacionestellex@gmail.com</span>
               </li>
               <li className="flex items-start gap-2.5">
-                <MapPin className="w-4 h-4 text-[#ca531a] shrink-0 mt-0.5" />
-                <span>Caracas, Venezuela.</span>
+                <MapPin className="w-4 h-4 text-[#ca531a] shrink-0 mt-1" />
+                <div>
+                  <p className="font-semibold text-white">Sede Caracas:</p>
+                  <p className="text-[11px] text-emerald-100/70">Av. Francisco de Miranda, Chacao, Caracas, Miranda.</p>
+                </div>
+              </li>
+              <li className="flex items-start gap-2.5">
+                <MapPin className="w-4 h-4 text-[#ca531a] shrink-0 mt-1" />
+                <div>
+                  <p className="font-semibold text-white">Sede Lechería & Puerto La Cruz:</p>
+                  <p className="text-[11px] text-emerald-100/70">Av. Principal de Lechería, Complejo El Morro, Anzoátegui.</p>
+                </div>
               </li>
             </ul>
           </div>

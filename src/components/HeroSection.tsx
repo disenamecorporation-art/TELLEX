@@ -40,7 +40,7 @@ export default function HeroSection({ onQuoteClick, onWorkClick }: HeroSectionPr
               className="text-xs font-bold uppercase tracking-widest text-[#ca531a] bg-[#ca531a]/10 px-3 py-1.5 rounded-full inline-block w-fit mb-6"
               id="hero-badge"
             >
-              15 Años en el Mercado — Líderes en Fumigación de Chinches y Dengue
+              15 Años en el Mercado — Líderes en Fumigación de Chinches, Dengue, Insectos, Roedores y Termitas
             </motion.span>
 
             {/* Giant Title: Montserrat Light/ExtraLight for display feel */}

@@ -15,6 +15,7 @@ import StoreSection from './components/StoreSection';
 import FeaturedProducts from './components/FeaturedProducts';
 import AuthModal from './components/AuthModal';
 import PestEducation from './components/PestEducation';
+import CoverageSEO from './components/CoverageSEO';
 import { getSupabase } from './lib/supabase';
 import { Lead, CartItem, Product, User } from './types';
 
@@ -493,6 +494,9 @@ export default function App() {
 
             {/* 3.5. Detailed Pest Education container (Chinches, Dengue, etc.) */}
             <PestEducation />
+
+            {/* 3.6. Local SEO & Operational Coverage (Caracas, Lechería, Puerto La Cruz) */}
+            <CoverageSEO />
 
             {/* Productos Destacados */}
             <FeaturedProducts 
